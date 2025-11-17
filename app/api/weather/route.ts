@@ -11,10 +11,11 @@ export async function GET(request: NextRequest) {
     )
   }
 
+  // Using OpenWeatherMap API (free tier)
+  // You can get a free API key from https://openweathermap.org/api
+  const API_KEY = process.env.WEATHER_API_KEY || 'demo_key'
+
   try {
-    // Using OpenWeatherMap API (free tier)
-    // You can get a free API key from https://openweathermap.org/api
-    const API_KEY = process.env.WEATHER_API_KEY || 'demo_key'
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=metric`
 
     const response = await fetch(url)
