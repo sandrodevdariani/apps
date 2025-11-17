@@ -84,7 +84,8 @@ export async function GET(request: NextRequest) {
     }
     
     // Only return mock data if API key is missing (demo mode)
-    if (API_KEY === 'demo_key') {
+    const apiKey = process.env.WEATHER_API_KEY || 'demo_key'
+    if (apiKey === 'demo_key') {
       return NextResponse.json(mockData)
     }
     
